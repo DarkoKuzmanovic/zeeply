@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Build output
+dist/
+build/
+out/
+
+# Generated files
+src/output.css
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE/Editor specific
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Electron specific
+.electron-builder.env
+
+# Debug logs
+debug.log
