@@ -2,7 +2,7 @@
 
 A modern desktop application for viewing and editing ZPL (Zebra Programming Language) files with real-time preview.
 
-![Zeeply Screenshot](screenshot.png)
+![Zeeply Screenshot](assets/screenshot.png)
 
 ## Features
 
@@ -25,39 +25,39 @@ A modern desktop application for viewing and editing ZPL (Zebra Programming Lang
 
 1. Clone the repository
 
-``` bash
+```bash
 git clone https://github.com/yourusername/zeeply.git
 cd zeeply
 ```
 
 2. Install dependencies
 
-``` bash
+```bash
 npm install
 ```
 
 3. Run the development server
 
-``` bash
+```bash
 npm start
 ```
 
 ### Build
 
-``` bash
+```bash
 npm run build
 ```
 
 ## Keyboard Shortcuts
 
-| Action | Windows/Linux | macOS |
-|--------|--------------|-------|
-| Open File | `Ctrl + O` | `⌘ + O` |
-| Export as PNG | `Ctrl + E` | `⌘ + E` |
-| Rotate Preview | `Ctrl + R` | `⌘ + R` |
-| Zoom In | `Ctrl + =` | `⌘ + =` |
-| Zoom Out | `Ctrl + -` | `⌘ + -` |
-| Developer Tools | `F12` | `F12` |
+| Action          | Windows/Linux | macOS   |
+| --------------- | ------------- | ------- |
+| Open File       | `Ctrl + O`    | `⌘ + O` |
+| Export as PNG   | `Ctrl + E`    | `⌘ + E` |
+| Rotate Preview  | `Ctrl + R`    | `⌘ + R` |
+| Zoom In         | `Ctrl + =`    | `⌘ + =` |
+| Zoom Out        | `Ctrl + -`    | `⌘ + -` |
+| Developer Tools | `F12`         | `F12`   |
 
 ## Credits
 
