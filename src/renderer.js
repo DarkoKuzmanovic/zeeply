@@ -81,17 +81,47 @@ document.addEventListener("DOMContentLoaded", () => {
     monaco.languages.register({ id: "zpl" });
     monaco.languages.setMonarchTokensProvider("zpl", ZPL_LANGUAGE);
 
-    // Create editor
+    // Define custom Monaco themes to match DaisyUI
+    monaco.editor.defineTheme("zeeply-light", {
+      base: "vs",
+      inherit: true,
+      rules: [],
+      colors: {
+        "editor.background": "#f8f9fc", // Slightly lighter than bg-base-200
+        "editor.foreground": "#1f2937", // text-base-content
+        "editor.lineHighlightBackground": "#f1f5f9", // Subtle highlight
+        "editorLineNumber.foreground": "#94a3b8", // Muted text
+        "editorIndentGuide.background": "#e2e8f0", // Subtle guides
+        "editor.selectionBackground": "#bfdbfe", // Light blue selection
+      },
+    });
+
+    monaco.editor.defineTheme("zeeply-dark", {
+      base: "vs-dark",
+      inherit: true,
+      rules: [],
+      colors: {
+        "editor.background": "#1d232a", // Matches DaisyUI dark theme bg-base-200
+        "editor.foreground": "#a6adbb", // text-base-content in dark
+        "editor.lineHighlightBackground": "#191e24", // Subtle highlight
+        "editorLineNumber.foreground": "#64748b", // Muted text
+        "editorIndentGuide.background": "#2d3640", // Subtle guides
+        "editor.selectionBackground": "#1e293b", // Dark blue selection
+      },
+    });
+
+    // Create editor with custom theme
     editor = monaco.editor.create(document.getElementById("editor"), {
       value: "",
       language: "zpl",
-      theme: "vs-dark",
+      theme: document.body.getAttribute("data-theme") === "dark" ? "zeeply-dark" : "zeeply-light",
       minimap: { enabled: false },
       scrollBeyondLastLine: false,
       fontSize: 14,
       lineNumbers: "on",
       renderWhitespace: "selection",
       automaticLayout: true,
+      padding: { top: 16, bottom: 16 },
     });
 
     // Add renderZPL function
@@ -390,20 +420,23 @@ document.addEventListener("DOMContentLoaded", () => {
     // Theme management
     function setTheme(theme) {
       if (theme === "system") {
-        // Check system preference
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
           document.documentElement.classList.add("dark");
-          editor.updateOptions({ theme: "vs-dark" });
+          document.body.setAttribute("data-theme", "dark");
+          editor.updateOptions({ theme: "zeeply-dark" });
         } else {
           document.documentElement.classList.remove("dark");
-          editor.updateOptions({ theme: "vs" });
+          document.body.setAttribute("data-theme", "light");
+          editor.updateOptions({ theme: "zeeply-light" });
         }
       } else if (theme === "dark") {
         document.documentElement.classList.add("dark");
-        editor.updateOptions({ theme: "vs-dark" });
+        document.body.setAttribute("data-theme", "dark");
+        editor.updateOptions({ theme: "zeeply-dark" });
       } else {
         document.documentElement.classList.remove("dark");
-        editor.updateOptions({ theme: "vs" });
+        document.body.setAttribute("data-theme", "light");
+        editor.updateOptions({ theme: "zeeply-light" });
       }
     }
 
